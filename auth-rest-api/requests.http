@@ -1,0 +1,8 @@
+# Login POST
+POST http://localhost:9000/login
+Content-Type: application/json
+
+{
+    "email": "admin@ovelo.com",
+    "password": "secret"
+}

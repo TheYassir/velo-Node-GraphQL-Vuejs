@@ -1,0 +1,22 @@
+input Filter {
+    kind_of_bike_id: Int
+    status: BikeStatusEnum
+    point_of_sale_id: Int
+}
+
+# Le type query est un type spécial
+# Chacune de ses propriétés va représenter un "point d'entrée" de notre API
+# Du quel on pourra faire partir nos requêtes
+"""
+Récupérer les données
+"""
+type Query {
+
+    getBike(id: Int!): Bike
+    getBikes(filter: Filter): [Bike]
+    getBikeInRent(number: String!): Bike
+    getKindsOfBike: [KindOfBike]
+    getPointsOfSale: [PointOfSale]
+    getRents: [Rent]
+
+}

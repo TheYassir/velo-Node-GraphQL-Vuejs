@@ -1,0 +1,12 @@
+"Un type vélo"
+type KindOfBike {
+    id: Int
+    label: String
+    price: Float
+    priceInOtherCurrency(currency: String!): Float
+}
+
+input KindOfBikeInput {
+    label: String!
+    price: Float!
+}

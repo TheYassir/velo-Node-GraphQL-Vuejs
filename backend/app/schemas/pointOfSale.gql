@@ -1,0 +1,10 @@
+"Un point de vente"
+type PointOfSale {
+    id: Int
+    label: String
+    bikes: [Bike]
+}
+
+input PointOfSaleInput {
+    label: String!
+}

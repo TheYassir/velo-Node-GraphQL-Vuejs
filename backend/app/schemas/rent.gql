@@ -1,0 +1,26 @@
+"Une location"
+type Rent {
+    id: Int
+    client_firstname: String
+    client_lastname: String
+    start_date: String!
+    return_date_planned: String!
+    return_date: String
+    rent_point_of_sale: PointOfSale!
+    return_point_of_sale: PointOfSale
+}
+
+input RentInput {
+    client_firstname: String!
+    client_lastname: String!
+    start_date: String
+    return_date_planned: String!
+    bike_number: String!
+    rent_point_of_sale_id: Int!
+}
+
+input StopRentInput {
+    bike_number: String!
+    rent_point_of_sale_id: Int!
+    return_date: String!
+}

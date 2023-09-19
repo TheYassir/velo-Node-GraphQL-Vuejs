@@ -1,0 +1,24 @@
+enum BikeStatusEnum {
+    AVAILABLE
+    RENT
+    REPAIR
+    LOST
+}
+
+"Un vélo"
+type Bike {
+    id: Int
+    number: String
+    status: BikeStatusEnum
+    kind_of_bike: KindOfBike
+    point_of_sale: PointOfSale
+    rent: Rent
+    rents: [Rent]
+}
+
+input BikeInput {
+    number: String!
+    status: BikeStatusEnum = AVAILABLE
+    kind_of_bike_id: Int!
+    point_of_sale_id: Int!
+}

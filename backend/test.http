@@ -1,0 +1,84 @@
+@endpoint = http://localhost:{{$dotenv PORT}}/graphql
+
+###################################################################
+# Requête GQL nécessaires au front (BONUS)
+###################################################################
+
+### Récupération de la liste des vélos
+POST {{ endpoint }}
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+query GetBikes ($filter: Filter, $currency: String!){
+  getBikes(filter: $filter) {
+    id
+    number
+    status
+    kind_of_bike {
+      label
+      price
+      priceInOtherCurrency(currency: $currency)
+    }
+  }
+}
+
+{
+  "filter": {
+    "kind_of_bike_id": 1
+  },
+  "currency": "USD"
+}
+
+### Récupération d'une location en cours (recherche vélo par numéro)
+POST {{ endpoint }}
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+query GetBikeInRent($getBikeInRent: String!) {
+  getBikeInRent(number: $getBikeInRent) {
+    number
+    rent {
+      client_firstname
+      client_lastname
+      rent_point_of_sale {
+        label
+      }
+      return_date_planned
+    }
+  }
+}
+
+{
+  "getBikeInRent": "A00002"
+}
+
+###################################################################
+# Requête GQL nécessaires au test de la version actuelle
+###################################################################
+
+### Récupération d'un velo par son numéro
+POST {{ endpoint }}
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+query GetBike($getBikeId: Int!) {
+  getBike(id: $getBikeId) {
+    id
+    number
+    status
+    rents {
+      start_date
+      return_date
+      rent_point_of_sale{
+        label
+      }
+      return_point_of_sale{
+        label
+      }
+    }
+  }
+}
+
+{
+  "getBikeId": 3
+}

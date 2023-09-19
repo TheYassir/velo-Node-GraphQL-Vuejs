@@ -1,0 +1,7 @@
+"CRUD"
+type Mutation {
+    addRent(input: RentInput!): Rent
+    stopRent(input: StopRentInput!): Rent
+    addBike(input: BikeInput!): Bike
+    updateBike(id: Int!, input: BikeInput!): Bike
+}

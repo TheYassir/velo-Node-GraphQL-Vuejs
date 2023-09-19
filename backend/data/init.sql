@@ -1,0 +1,7 @@
+-- Si database already exist
+DROP DATABASE IF EXISTS velo;
+DROP ROLE IF EXISTS velo;
+
+CREATE ROLE velo WITH LOGIN PASSWORD 'velo';
+CREATE DATABASE velo OWNER velo;
+

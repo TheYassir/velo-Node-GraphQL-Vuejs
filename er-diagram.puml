@@ -1,0 +1,38 @@
+@startuml
+
+entity type {
+    * label
+    --
+    price
+}
+
+entity bike {
+    * number
+    --
+    status
+}
+
+entity rent {
+    * firstname
+    * lastname
+    * startDate
+    --
+    returnDatePlanned
+    returnDateReal
+}
+
+entity shop {
+    * name
+    --
+    address
+    zipcode
+    city
+}
+
+bike }o--|| type : has
+bike ||--o{ rent : have
+rent }o--|| shop : rented at
+rent }o--|| shop : returned at
+bike }o--|| shop : located in
+
+@enduml
